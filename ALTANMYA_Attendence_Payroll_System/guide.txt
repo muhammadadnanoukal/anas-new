@@ -1,0 +1,6 @@
+pip install grpcio==1.44.0
+
+pip install grpcio-status==1.44.0
+
+pip uninstall protobuf
+pip install protobuf==3.20.3

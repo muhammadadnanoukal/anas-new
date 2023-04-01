@@ -28,14 +28,14 @@
                                         <div>Job Ticket</div>
                                     </td>
                                     <td style="width:40%">
-                                        <span t-if="o.date_finished">
-                                            <div style="text-align: right; margin-top: -10px;">
-                                                <span style="font-weight: normal; font-size: 8pt;"
-                                                      t-esc="o.date_finished.strftime('%d/%m/%Y')"/>
-                                                <br/>
-                                                <span t-field="o.name"/>
-                                            </div>
-                                        </span>
+                                        <!--<span t-if="o.date_finished">-->
+                                        <div style="text-align: right; margin-top: -10px;">
+                                            <!--<span style="font-weight: normal; font-size: 8pt;"-->
+                                            <!--      t-esc="o.date_finished.strftime('%d/%m/%Y')"/>-->
+                                            <br/>
+                                            <span t-field="o.name"/>
+                                        </div>
+                                        <!--</span>-->
                                     </td>
                                 </tr>
                             </table>
@@ -64,7 +64,6 @@
                                     </td>
                                 </tr>
                             </table>
-
                             <table class="table table-bordered table-sm"
                                    style="border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 10px; border: 1px solid black; width:100%">
                                 <tr style="text-align: center;">
@@ -115,44 +114,53 @@
                                     </td>
                                 </tr>
                             </table>
-                            <span style="border-left: 1px solid black; height: 530px; position: absolute; left: 50%; margin-left: -3px;"/>
-                            <table class="table table-borderless" style="width:100%">
-                                <tr>
-                                    <td style="vertical-align:top; width:50%">
-                                        <span>Remarks</span>
-                                        <br/>
-                                        <br/>
-                                        <span style="font-weight: normal;" t-field="o.bom_id.remarks"/>
-                                    </td>
-                                    <td style="width:50%">
-                                        <center>
+                            <div>
+                                <span style="border-left: 1px solid black; height: 530px; position: absolute; left: 50%; margin-left: -3px;"/>
+                                <table class="table table-borderless" style="height: 600px; width:100%">
+                                    <tr>
+                                        <td style="vertical-align:top; width:50%">
+                                            <span>Remarks</span>
                                             <br/>
                                             <br/>
-                                            <img t-if="o.product_id.image_1920"
-                                                 t-att-src="image_data_uri(o.product_id.image_1920)" border="0"
-                                                 style="width: 100%;"/>
-                                        </center>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="footer" dir="LTR" style="font-family: Courier New; font-size: 10pt;">
-                            <table class="table table-borderless" style="width:100%">
-                                <tr style="text-align: center;">
-                                    <td colspan="1">DTS (Pre-Press)</td>
-                                    <td colspan="1">Material Planning</td>
-                                    <td colspan="1">Quality Control</td>
-                                    <td colspan="1">Plant Manager</td>
-                                    <td colspan="1">Warehouse</td>
-                                </tr>
-                                <tr style="text-align: center;">
-                                    <td colspan="1">__________________</td>
-                                    <td colspan="1">__________________</td>
-                                    <td colspan="1">__________________</td>
-                                    <td colspan="1">__________________</td>
-                                    <td colspan="1">__________________</td>
-                                </tr>
-                            </table>
+                                            <span style="font-weight: normal;" t-field="o.bom_id.remarks"/>
+                                        </td>
+                                        <td style="width:50%">
+                                            <center>
+                                                <br/>
+                                                <br/>
+                                                <img t-if="o.product_id.image_1920"
+                                                     t-att-src="image_data_uri(o.product_id.image_1920)" border="0"
+                                                     style="width: 100%;"/>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
+                            <div style="margin-left: -20px; font-weight: normal;">
+                                <table class="table table-borderless" style="width:100%">
+                                    <tr style="text-align: center;">
+                                        <td colspan="1">DTS (Pre-Press)</td>
+                                        <td colspan="1">Material Planning</td>
+                                        <td colspan="1">Quality Control</td>
+                                        <td colspan="1">Plant Manager</td>
+                                        <td colspan="1">Warehouse</td>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                    </tr>
+                                    <tr>
+                                        <td/>
+                                    </tr>
+                                    <tr style="text-align: center;">
+                                        <td colspan="1">__________________</td>
+                                        <td colspan="1">__________________</td>
+                                        <td colspan="1">__________________</td>
+                                        <td colspan="1">__________________</td>
+                                        <td colspan="1">__________________</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </t>
                 </t>

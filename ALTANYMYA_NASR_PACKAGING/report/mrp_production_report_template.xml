@@ -116,7 +116,7 @@
                             </table>
                             <div>
                                 <span style="border-left: 1px solid black; height: 530px; position: absolute; left: 50%; margin-left: -3px;"/>
-                                <table class="table table-borderless" style="height: 600px; width:100%">
+                                <table class="table table-borderless" style="height: 570px; width:100%">
                                     <tr>
                                         <td style="vertical-align:top; width:50%">
                                             <span>Remarks</span>

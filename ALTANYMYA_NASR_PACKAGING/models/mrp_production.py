@@ -4,8 +4,9 @@ from odoo import api, fields, models
 class MrpProductionNasr(models.Model):
     _inherit = 'mrp.production'
 
-    sale_order_id = fields.Many2one('sale.order', string='Sale Order')
-    sale_order_line_id = fields.Many2one('sale.order.line', string="Sale Order Line")
+    sale_order_id = fields.Many2one('sale.order', string='Sale Order', compute='_compute_sale_order_id')
+    sale_order_line_id = fields.Many2one('sale.order.line', string="Sale Order Line",
+                                         compute='_compute_sale_order_line_id')
 
     hide = fields.Boolean(string='Hide', compute="_compute_hide")
     sale_order_partner_id = fields.Char(string='Customer', compute='_compute_sale_order_partner_id')
@@ -85,3 +86,25 @@ class MrpProductionNasr(models.Model):
                 rec.sale_order_client_order_ref = rec.sale_order_id.client_order_ref
             else:
                 rec.sale_order_client_order_ref = ''
+
+    @api.depends('sale_order_id')
+    def _compute_sale_order_line_id(self):
+        for rec in self:
+            if rec.sale_order_id:
+                values = self.env['sale.order.line'].search([('order_id', '=', self.sale_order_id.ids)])
+                for lines in values:
+                    if lines.product_id == rec.product_id:
+                        rec.sale_order_line_id = lines
+                    else:
+                        rec.sale_order_line_id = None
+            else:
+                rec.sale_order_line_id = None
+
+    @api.model
+    def _compute_sale_order_id(self):
+        for rec in self:
+            if rec.origin:
+                rec.sale_order_id = self.env['sale.order'].search([('name', '=', rec.origin)])
+                print("rec.sale_order_id", rec.sale_order_id)
+            else:
+                rec.sale_order_id = None

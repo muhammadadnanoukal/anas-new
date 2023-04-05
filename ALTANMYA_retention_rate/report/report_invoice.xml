@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_document_inherit_retention" inherit_id="account.report_invoice_document">
+            <!--            <xpath expr="//table[@class='table table-sm table-borderless'][1]/t[2]" position="before">-->
+            <!--            </xpath>-->
+            <xpath expr="//table[@class='table table-sm table-borderless'][1]/t[2]" position="after">
+                <tr class="border-black o_subtotal" t-if="o.show_retention and o.move_type == 'out_invoice'">
+                    <td>
+                        <strong>Retention Amount</strong>
+                    </td>
+                    <td class="text-end">
+                        <span>$</span>
+                        <span t-field="o.retention_amount"/>
+                    </td>
+                </tr>
+                <tr class="border-black o_subtotal" t-if="o.show_retention and o.move_type == 'out_invoice'">
+                    <td>
+                        <strong>Total Without Retention</strong>
+                    </td>
+                    <td class="text-end">
+                        <span>$</span>
+                        <span t-field="o.total_without_retention"/>
+                    </td>
+                </tr>
+            </xpath>
+        </template>
+    </data>
+</odoo>
+
+
+

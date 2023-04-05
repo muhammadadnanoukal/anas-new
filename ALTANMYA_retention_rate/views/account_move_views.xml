@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="account_invoice_retention_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.retention.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@id='header_right_group'][1]/field[5]" position="after">
+                <field name="show_retention"
+                       attrs="{'invisible': [('move_type', 'not in', ['out_invoice', 'out_refund'])]}"/>
+                <field name="retention_rate" widget="percentage"
+                       attrs="{'invisible': [('show_retention', '=', False)]}"/>
+            </xpath>
+            <!--            <xpath expr="//group[@class='oe_subtotal_footer oe_right'][1]/field[1]" position="before">-->
+            <!--            </xpath>-->
+            <xpath expr="//field[@class='oe_subtotal_footer_separator'][1]" position="before">
+                <field name="retention_amount"
+                       attrs="{'invisible': [('show_retention', '=', False)]}" colspan="2"
+                       readonly="1" style="font-weight: bold; font-size: 1em;" widget="monetary"
+                       options="{'currency_field': 'currency_id'}"/>
+
+                <field name="total_without_retention"
+                       attrs="{'invisible': [('show_retention', '=', False)]}" colspan="2"
+                       readonly="1" style="font-weight: bold; font-size: 1em;" widget="monetary"
+                       options="{'currency_field': 'currency_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

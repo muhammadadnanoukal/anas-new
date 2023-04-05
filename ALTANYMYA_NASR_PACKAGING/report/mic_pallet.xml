@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="ALTANYMYA_NASR_PACKAGING.nasr_report_mic_pallet_id">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <div class="page" dir="LTR"
+                             style="font-family: Courier New; text-transform: uppercase; font-weight: bold; width:100%">
+                            <t t-foreach="o.move_line_ids_without_package" t-as="product">
+                                <t t-foreach="product.pallet" t-as="product_pallet">
+                                    <table class="table" style="border-color: #FFFFFF; height: 1100px; width:100%">
+                                        <tr>
+                                            <td>
+                                                <t t-set="last8digits" t-value="product.product_id.name[-8:]"/>
+                                                <t t-if="o.group_id">
+                                                    <t t-set="last7digits" t-value="o.group_id.name[-7:]"/>
+                                                </t>
+                                                <t t-if="product.product_id.product_group">
+
+                                                    <t t-if="'C10.4' in product.product_id.product_group">
+                                                        <t t-if="product.product_id.product_group == 'C10.4NPWBSF'">
+                                                            <t t-set="mrms" t-value="str('00038924')"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-set="mrms" t-value="str('00038929')"/>
+                                                        </t>
+                                                    </t>
+
+                                                    <t t-if="'C4.7' in product.product_id.product_group">
+                                                        <t t-if="product.product_id.product_group == 'C4.7NPWBSF'">
+                                                            <t t-set="mrms" t-value="str('00038915')"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-set="mrms" t-value="str('00038918')"/>
+                                                        </t>
+                                                    </t>
+
+                                                    <t t-if="'C12.3' in product.product_id.product_group">
+                                                        <t t-if="product.product_id.product_group == 'C12.3NPWBSF'">
+                                                            <t t-set="mrms" t-value="str('00038933')"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-set="mrms" t-value="str('00038931')"/>
+                                                        </t>
+                                                    </t>
+
+                                                    <t t-if="'C0.58' in product.product_id.product_group">
+                                                        <t t-if="product.product_id.product_group == 'C0.54NPWB'">
+                                                            <t t-set="mrms" t-value="str('00038908')"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-set="mrms" t-value="str('00038909')"/>
+                                                        </t>
+                                                    </t>
+
+                                                    <t t-if="'C0.54' in product.product_id.product_group">
+                                                        <t t-if="product.product_id.product_group == 'C0.98NPWB'">
+                                                            <t t-set="mrms" t-value="str('00038912')"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-set="mrms" t-value="str('00038913')"/>
+                                                        </t>
+                                                    </t>
+
+                                                </t>
+                                                <br/>
+                                                <br/>
+                                                <div>supplier:</div>
+
+                                                <table style="width: 100%">
+                                                    <tr>
+                                                        <td style="width: 50%">
+                                                            <center style="font-size: 48pt">
+                                                                NASRPAC
+
+                                                                <span style="font-size: 42pt;">
+                                                                    JEDDAH,KSA
+                                                                </span>
+                                                            </center>
+                                                        </td>
+                                                        <td style="width: 50%">
+                                                            <div style="font-size: 18pt; margin-left: 30px;">
+                                                                <div>
+                                                                    <span>sup.product#:</span>
+                                                                    <span t-esc="last8digits"/>
+                                                                </div>
+                                                                <div>
+                                                                    <span>mrms:</span>
+                                                                    <t t-if="mrms">
+                                                                        <span t-esc="mrms"/>
+                                                                    </t>
+                                                                </div>
+                                                                <div>
+                                                                    <span>prod.date:</span>
+                                                                    <span t-if="o.date_done">
+                                                                        <span t-esc="o.date_done.strftime('%d/%m/%Y')"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div>
+                                                                    <span>pallet:</span>
+                                                                    <t t-set="pallet_num" t-value="product_pallet + 1"/>
+                                                                    <span t-esc="pallet_num"/>
+                                                                </div>
+                                                                <br/>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                MATERIAL DESCRIPTION:
+
+                                                <div style="font-size: 42pt;" t-field="product.product_id"/>
+                                                <p style="border-top: 1px solid black; width:100%;"/>
+                                                <br/>
+                                                <br/>
+                                                <table class="table" style="border: 1px solid black; width:100%;">
+                                                    <tr>
+                                                        <td style="width: 50%">
+                                                            <div>IPMS/GCAS#:</div>
+
+                                                            <span style="font-size: 24pt;" t-esc="last8digits"/>
+                                                        </td>
+                                                        <td style="width: 50%">
+                                                            <div>QUANTITY :</div>
+                                                            <span style="font-size: 24pt;" t-field="product.qty_done"/>
+                                                            <span style="font-size: 24pt;">pcs</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 50%">
+                                                            <div>LOT#:</div>
+                                                            <t t-if="last7digits and o.partial_delivery">
+                                                                <t t-set="lot"
+                                                                   t-value="'NPSA' + last7digits + o.partial_delivery"/>
+                                                                <span style="font-size: 24pt;" t-esc="lot"/>
+                                                            </t>
+                                                            <t t-if="not last7digits and o.partial_delivery">
+                                                                <t t-set="lot" t-value="'NPSA' + o.partial_delivery"/>
+                                                                <span style="font-size: 24pt;" t-esc="lot"/>
+                                                            </t>
+                                                        </td>
+                                                        <td style="width: 50%">
+                                                            <div>PALLET TYPE</div>
+                                                            <span style="font-size: 24pt;">NONE</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <p style="margin-left: 100px;">ITEM+QUANTITY</p>
+                                                <t t-if="last8digits">
+                                                    <t t-set="merge_barcode"
+                                                       t-value="'(91)' + last8digits + '(37)' + str(product.qty_done)"/>
+                                                </t>
+                                                <center>
+                                                    <t t-if="merge_barcode">
+                                                        <div t-esc="merge_barcode"
+                                                             t-options="{'widget': 'barcode','img_align': 'center', 'humanreadable': 1}"/>
+                                                    </t>
+                                                </center>
+                                                <br/>
+                                                <p style="margin-left: 100px;">LOTNO+PALLET TYPE</p>
+                                                <t t-if="lot">
+                                                    <t t-set="lot_barcode" t-value="'(10)' + lot + '(90)' + 'NONE'"/>
+                                                </t>
+                                                <center>
+                                                    <div t-esc="lot_barcode"
+                                                         t-options="{'widget': 'barcode','img_align': 'center', 'humanreadable': 1}"/>
+                                                </center>
+                                                <br/>
+                                                <p style="margin-left: 100px;">SSCC</p>
+                                                <center>
+                                                    <div t-esc="o.random_unique_number"
+                                                         t-options="{'widget': 'barcode','img_align': 'center', 'humanreadable': 1}"/>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </t>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

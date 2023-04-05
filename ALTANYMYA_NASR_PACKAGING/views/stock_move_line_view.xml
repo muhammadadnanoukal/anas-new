@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrp_bom_inherited" model="ir.ui.view">
+        <field name="name">stock.picking.inherited</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <xpath name="arch" type="xml">
+            <xpath expr="//field[20]" position="after">
+                <field name="pallet"/>
+                <field name="qty_done"/>
+            </xpath>
+        </xpath>
+    </record>
+</odoo>

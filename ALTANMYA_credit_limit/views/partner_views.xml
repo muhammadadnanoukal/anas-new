@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_partner_property_form_credit_limit" model="ir.ui.view">
+        <field name="name">view.res.partner.form.credit.limit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='accounting_entries']" position="after">
+                <group string="Custom Credit Limits">
+                    <field name="c_use_partner_credit_limit"/>
+                    <field name="c_credit_limit" attrs="{'invisible': [('c_use_partner_credit_limit', '=', False)]}"/>
+                    <field name="action_type"/>
+                    <field name="number_of_allowed_late_days"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

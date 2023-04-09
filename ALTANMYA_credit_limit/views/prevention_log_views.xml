@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_partner_prevention_log_search" model="ir.ui.view">
+        <field name="name">partner.prevention.log.search</field>
+        <field name="model">partner.prevention.log</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <separator/>
+                <filter name="group_by_partner" string="Customer Name" context="{'group_by':'partner_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="partner_prevention_log_action" model="ir.actions.act_window">
+        <field name="name">Customers Prevention Log</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">partner.prevention.log</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'search_default_group_by_partner': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There are no prevention operations yet!
+            </p>
+        </field>
+    </record>
+
+    <record id="partner_prevention_log_view_tree" model="ir.ui.view">
+        <field name="name">partner.prevention.log.tree</field>
+        <field name="model">partner.prevention.log</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="partner_id"/>
+                <field name="prevention_date"/>
+                <field name="so_invoice"/>
+                <field name="amount"/>
+                <field name="reason"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="partner_prevention_log_reports_menu" name="Credit Limit Reports" parent="account.menu_finance_reports"
+    >
+        <menuitem id="menu_action_partner_prevention_log" name="Customers Prevention Log"
+                  action="partner_prevention_log_action"/>
+    </menuitem>
+</odoo>

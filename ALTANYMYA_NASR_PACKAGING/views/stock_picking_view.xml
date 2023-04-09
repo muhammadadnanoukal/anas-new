@@ -8,6 +8,7 @@
             <field name="origin" position="after">
                 <field name="random_unique_number" invisible="1"/>
                 <field name="partial_delivery" invisible="1"/>
+                <field name="sale_order_id" invisible="1"/>
             </field>
         </field>
     </record>

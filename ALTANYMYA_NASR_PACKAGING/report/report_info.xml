@@ -19,4 +19,24 @@
         <field name="binding_model_id" ref="model_stock_picking"/>
         <field name="binding_type">report</field>
     </record>
+
+    <record id="standard_half_page_pallet_report" model="ir.actions.report">
+        <field name="name">Print Standard Half Page Report</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ALTANYMYA_NASR_PACKAGING.nasr_report_standard_half_page_pallet_id</field>
+        <field name="report_file">ALTANYMYA_NASR_PACKAGING.nasr_report_standard_half_page_pallet_id</field>
+        <field name="binding_model_id" ref="model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="standard_small_page_pallet_report" model="ir.actions.report">
+        <field name="name">Print Standard Small Page Report</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ALTANYMYA_NASR_PACKAGING.nasr_report_standard_small_page_pallet_id</field>
+        <field name="report_file">ALTANYMYA_NASR_PACKAGING.nasr_report_standard_small_page_pallet_id</field>
+        <field name="binding_model_id" ref="model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
 </odoo>

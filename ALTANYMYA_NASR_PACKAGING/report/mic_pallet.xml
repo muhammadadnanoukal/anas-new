@@ -4,11 +4,11 @@
         <template id="ALTANYMYA_NASR_PACKAGING.nasr_report_mic_pallet_id">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="web.basic_layout">
-                        <div class="page" dir="LTR"
-                             style="font-family: Courier New; text-transform: uppercase; font-weight: bold; width:100%">
-                            <t t-foreach="o.move_line_ids_without_package" t-as="product">
-                                <t t-foreach="product.pallet" t-as="product_pallet">
+                    <t t-foreach="o.move_line_ids_without_package" t-as="product">
+                        <t t-foreach="product.pallet" t-as="product_pallet">
+                            <t t-call="web.basic_layout">
+                                <div class="page" dir="LTR"
+                                     style="font-family: Courier New; text-transform: uppercase; font-weight: bold; width:100%">
                                     <table class="table" style="border-color: #FFFFFF; height: 1100px; width:100%">
                                         <tr>
                                             <td>
@@ -71,9 +71,9 @@
                                                 <table style="width: 100%">
                                                     <tr>
                                                         <td style="width: 50%">
+                                                            <br/>
                                                             <center style="font-size: 48pt">
                                                                 NASRPAC
-
                                                                 <span style="font-size: 42pt;">
                                                                     JEDDAH,KSA
                                                                 </span>
@@ -81,6 +81,7 @@
                                                         </td>
                                                         <td style="width: 50%">
                                                             <div style="font-size: 18pt; margin-left: 30px;">
+                                                                <br/>
                                                                 <div>
                                                                     <span>sup.product#:</span>
                                                                     <span t-esc="last8digits"/>
@@ -107,10 +108,8 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-                                                MATERIAL DESCRIPTION:
-
-                                                <div style="font-size: 42pt;" t-field="product.product_id"/>
-                                                <p style="border-top: 1px solid black; width:100%;"/>
+                                                <span style="margin-top: 3px;">MATERIAL DESCRIPTION:</span>
+                                                <div style="font-size: 42pt;" t-field="product.product_id.name"/>
                                                 <br/>
                                                 <br/>
                                                 <table class="table" style="border: 1px solid black; width:100%;">
@@ -174,9 +173,9 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </t>
+                                </div>
                             </t>
-                        </div>
+                        </t>
                     </t>
                 </t>
             </t>
